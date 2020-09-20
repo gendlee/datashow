@@ -2,20 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>DataShow</title>
     <!-- 引入 ECharts 文件 -->
     <script src="js/echarts.min.js"></script>
+
 </head>
+
 <body>
 <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-<div id="main" style="width: 600px;height:400px;position:absolute;top:50%;left: 50%;margin-top: -200px;margin-left: -300px;"></div>
+<div id="bar" style="margin: 50px;top: 50px;width: 600px;height: 400px;display:flex;justify-content:space-around;"></div>
+<div id="pie" style="margin: 50px;top: 50px;width: 600px;height: 400px;display:inline-block;justify-content:space-around;"></div>
 
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));//main是<div id="main" style="width: 600px;height:400px;"></div>的id
-
+    var myBar = echarts.init(document.getElementById('bar'));//main是<div id="main" style="width: 600px;height:400px;"></div>的id
+    var myPie = echarts.init(document.getElementById("pie"));
     // 指定图表的配置项和数据
-    var option = {
+    var barOption = {
         title: {
             text: '我的小胖胖体重'
         },
@@ -34,8 +37,33 @@
         }]
     };
 
+    var pieOption = {
+        title: {
+            text: '饼图主题'
+        },
+        series : [
+            {
+                name: '访问来源',
+                type: 'pie',    // 设置图表类型为饼图
+                radius: '55%',  // 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。
+                data:[          // 数据数组，name 为数据项名称，value 为数据项值
+                    {value:235, name:'视频广告'},
+                    {value:274, name:'联盟广告'},
+                    {value:310, name:'邮件营销'},
+                    {value:335, name:'直接访问'},
+                    {value:400, name:'搜索引擎'}
+                ]
+            }
+        ]
+    }
+
     // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+    myBar.setOption(barOption);
+    myPie.setOption(pieOption)
+
+
 </script>
+
+
 </body>
 </html>
