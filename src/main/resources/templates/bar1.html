@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 引入 ECharts 文件 -->
+    <script src="js/echarts.min.js"></script>
+</head>
+<body>
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<div id="main" style="width: 600px;height:400px;position:absolute;top:50%;left: 50%;margin-top: -200px;margin-left: -300px;"></div>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));//main是<div id="main" style="width: 600px;height:400px;"></div>的id
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '我的小胖胖体重'
+        },
+        tooltip: {},
+        legend: {
+            data:['爱称']
+        },
+        xAxis: {
+            data: ["小胖子","小胖仔","小屁屁","小肥肥","小胖墩子","pumpy"]
+        },
+        yAxis: {},
+        series: [{
+            name: '斤',
+            type: 'bar',
+            data: [100, 99, 50, 101, 102, 51]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>
