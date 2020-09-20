@@ -9,9 +9,12 @@
 </head>
 
 <body>
+<div id="hname" style="background-color:#666FFF;">
+    <h1 style="margin-bottom:0;text-align:center;">数据分析结果展示</h1>
+</div>
 <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-<div id="bar" style="margin: 50px;top: 50px;width: 600px;height: 400px;display:flex;justify-content:space-around;"></div>
-<div id="pie" style="margin: 50px;top: 50px;width: 600px;height: 400px;display:inline-block;justify-content:space-around;"></div>
+<div id="bar" style="margin-top: 50px;margin-left:50px;width: 600px;height: 400px;float:left;"></div>
+<div id="pie" style="margin-top: 50px;width: 600px;height: 400px;float:left;"></div>
 
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
@@ -31,9 +34,21 @@
         },
         yAxis: {},
         series: [{
-            name: '斤',
+            name: '体重（斤）',
             type: 'bar',
-            data: [100, 99, 50, 101, 102, 51]
+            data: [100, 99, 50, 101, 102, 51],
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: true,		//开启显示
+                        position: 'top',	//在上方显示
+                        textStyle: {	    //数值样式
+                            color: 'black',
+                            fontSize: 16
+                        }
+                    }
+                }
+            }
         }]
     };
 
@@ -52,7 +67,16 @@
                     {value:310, name:'邮件营销'},
                     {value:335, name:'直接访问'},
                     {value:400, name:'搜索引擎'}
-                ]
+                ],
+                itemStyle:{
+                    normal:{
+                        label:{
+                            show: true,
+                            formatter: '{b} : {c} ({d}%)'
+                        },
+                        labelLine :{show: true}
+                    }
+                }
             }
         ]
     }
